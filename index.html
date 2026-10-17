@@ -1,0 +1,1043 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0c234b" />
+  <title>Could Industrial Engineering Be Your Major?</title>
+  <style>
+    :root {
+      --navy: #0c234b;
+      --navy-2: #17365d;
+      --red: #ab0520;
+      --blue: #1e5288;
+      --sky: #e9f3f8;
+      --cream: #f7f4ed;
+      --white: #ffffff;
+      --ink: #10233f;
+      --muted: #607087;
+      --line: #d8e0e8;
+      --success: #16725b;
+      --shadow: 0 18px 50px rgba(12, 35, 75, 0.14);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-height: 100%; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(12,35,75,.035) 1px, transparent 1px),
+        linear-gradient(rgba(12,35,75,.035) 1px, transparent 1px),
+        var(--cream);
+      background-size: 32px 32px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    button { font: inherit; }
+
+    .top-rule {
+      height: 10px;
+      background: var(--red);
+    }
+
+    .shell {
+      width: min(980px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 40px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+      color: var(--navy);
+    }
+
+    .ua-logo {
+      display: block;
+      width: min(270px, 55vw);
+      height: auto;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      text-align: right;
+    }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid rgba(12,35,75,.10);
+      border-radius: var(--radius);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .screen {
+      min-height: 620px;
+      padding: clamp(28px, 5vw, 58px);
+    }
+
+    .screen[hidden] { display: none; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: currentColor;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 760px;
+      margin-bottom: 22px;
+      color: var(--navy);
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    h2 {
+      max-width: 780px;
+      margin-bottom: 12px;
+      color: var(--navy);
+      font-size: clamp(30px, 5vw, 50px);
+      line-height: 1.05;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      color: var(--navy);
+      font-size: 21px;
+    }
+
+    .lead {
+      max-width: 690px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(18px, 2.5vw, 23px);
+      line-height: 1.5;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .85fr;
+      gap: 28px;
+      align-items: end;
+      min-height: 500px;
+    }
+
+    .hero-panel {
+      padding: 26px;
+      border-radius: 20px;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .hero-panel strong {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 26px;
+      line-height: 1.15;
+    }
+
+    .hero-panel p {
+      margin-bottom: 0;
+      color: #dce8f5;
+      line-height: 1.5;
+    }
+
+    .primary,
+    .secondary {
+      min-height: 54px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+
+    .primary {
+      border: 2px solid var(--red);
+      color: var(--white);
+      background: var(--red);
+      box-shadow: 0 10px 22px rgba(171,5,32,.22);
+    }
+
+    .secondary {
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    .primary:hover,
+    .secondary:hover { transform: translateY(-2px); }
+
+    .primary:focus-visible,
+    .secondary:focus-visible,
+    .option:focus-visible {
+      outline: 4px solid #f4c95d;
+      outline-offset: 3px;
+    }
+
+    .start-button { font-size: 18px; }
+
+    .progress-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+    .progress {
+      flex: 1;
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #e6ebf0;
+    }
+
+    .progress > div {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--red);
+      transition: width .32s ease;
+    }
+
+    .progress-label {
+      min-width: 110px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .question-copy {
+      min-height: 125px;
+    }
+
+    .question-helper {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 26px 0 30px;
+    }
+
+    .option {
+      position: relative;
+      min-height: 82px;
+      padding: 18px 48px 18px 20px;
+      border: 2px solid var(--line);
+      border-radius: 16px;
+      color: var(--ink);
+      background: var(--white);
+      cursor: pointer;
+      font-weight: 700;
+      line-height: 1.35;
+      text-align: left;
+      transition: border .15s ease, background .15s ease, transform .15s ease;
+    }
+
+    .option:hover {
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .option::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 18px;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #9aabba;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .option.selected {
+      border-color: var(--navy);
+      background: var(--sky);
+    }
+
+    .option.selected::after {
+      border: 6px solid var(--navy);
+      background: var(--white);
+    }
+
+    .question-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .question-actions .primary:disabled {
+      border-color: #bac4ce;
+      background: #bac4ce;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .result-header {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .result-icon {
+      display: grid;
+      place-items: center;
+      width: 150px;
+      height: 150px;
+      border-radius: 28px;
+      color: var(--white);
+      background: var(--navy);
+      font-size: 64px;
+    }
+
+    .result-kicker {
+      margin-bottom: 8px;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+    }
+
+    .result-description {
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    .ie-fit-banner {
+      margin: 0 0 22px;
+      padding: 24px 28px;
+      border: 3px solid var(--red);
+      border-radius: 20px;
+      color: var(--navy);
+      background: #fff8f5;
+      text-align: center;
+    }
+
+    .ie-fit-banner span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .ie-fit-banner strong {
+      display: block;
+      font-size: clamp(29px, 4.3vw, 44px);
+      line-height: 1.06;
+      letter-spacing: -.025em;
+    }
+
+    .ie-fit-banner p {
+      max-width: 720px;
+      margin: 12px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .reveal {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .reveal-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fbfcfd;
+    }
+
+    .reveal-card.accent {
+      border-color: var(--navy);
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .reveal-card.accent h3 { color: var(--white); }
+
+    .reveal-card p {
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 8px 11px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--sky);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .result-action {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .final-question {
+      display: grid;
+      align-content: center;
+      min-height: 500px;
+    }
+
+    .final-question .options {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .thank-you {
+      display: grid;
+      align-content: center;
+      min-height: 520px;
+      text-align: center;
+    }
+
+    .check {
+      display: grid;
+      place-items: center;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--success);
+      font-size: 38px;
+      font-weight: 900;
+    }
+
+    .shift-message {
+      max-width: 600px;
+      margin: 12px auto 24px;
+      padding: 18px 20px;
+      border-left: 5px solid var(--red);
+      color: var(--navy);
+      background: var(--sky);
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.45;
+      text-align: left;
+    }
+
+    .privacy {
+      max-width: 720px;
+      margin: 24px auto 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 4px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .admin {
+      margin-top: 22px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--white);
+    }
+
+    .admin[hidden] { display: none; }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 14px;
+      background: var(--sky);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--navy);
+      font-size: 28px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .admin-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .admin-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 18px, 620px); padding-top: 14px; }
+      .brand-subtitle { display: none; }
+      .ua-logo { width: min(235px, 68vw); }
+      .card { border-radius: 18px; }
+      .screen { min-height: 670px; padding: 28px 20px; }
+      .hero-grid, .reveal, .result-header { grid-template-columns: 1fr; }
+      .hero-grid { min-height: 600px; }
+      .hero-panel { align-self: end; }
+      .options, .final-question .options { grid-template-columns: 1fr; }
+      .option { min-height: 68px; }
+      .result-icon { width: 104px; height: 104px; font-size: 44px; }
+      .admin-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-rule"></div>
+  <main class="shell">
+    <header class="brand" aria-label="The University of Arizona Industrial Engineering">
+      <img class="ua-logo" src="uofa-logo.png" alt="The University of Arizona" />
+      <div class="brand-subtitle">ENGR 102 · Major Match</div>
+    </header>
+
+    <section class="card" aria-live="polite">
+      <div class="screen" id="startScreen">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow">60-second major match</p>
+            <h1>What kind of problem-solver are you?</h1>
+            <p class="lead">Answer four quick questions about what you enjoy. Your result may reveal an engineering path you have not considered.</p>
+            <button class="primary start-button" id="startButton">Start the quiz</button>
+            <p class="privacy">Anonymous quiz: no name, email, or student ID is requested.</p>
+          </div>
+          <aside class="hero-panel">
+            <strong>There is more than one way to think like an engineer.</strong>
+            <p>Some people love data. Others improve experiences, coordinate complex plans, or make products and processes work better.</p>
+          </aside>
+        </div>
+      </div>
+
+      <div class="screen" id="questionScreen" hidden>
+        <div class="progress-wrap">
+          <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+          <div class="progress-label" id="progressLabel"></div>
+        </div>
+        <div class="question-copy">
+          <p class="eyebrow" id="questionEyebrow">Before we begin</p>
+          <h2 id="questionTitle"></h2>
+          <p class="question-helper" id="questionHelper"></p>
+        </div>
+        <div class="options" id="options" role="radiogroup" aria-labelledby="questionTitle"></div>
+        <div class="question-actions">
+          <button class="primary" id="continueButton" disabled>Continue</button>
+        </div>
+      </div>
+
+      <div class="screen" id="resultScreen" hidden>
+        <p class="eyebrow">Your result</p>
+        <div class="result-header">
+          <div class="result-icon" id="resultIcon" aria-hidden="true"></div>
+          <div>
+            <p class="result-kicker">You think like a</p>
+            <h2 id="resultTitle"></h2>
+            <p class="result-description" id="resultDescription"></p>
+          </div>
+        </div>
+        <div class="ie-fit-banner">
+          <span>Your IE match</span>
+          <strong>Industrial Engineering could be a great major for you.</strong>
+          <p>Your answers match the way industrial engineers approach real problems: combining people, data, technology, and better processes.</p>
+        </div>
+        <div class="reveal">
+          <div class="reveal-card accent">
+            <h3>Why IE fits you</h3>
+            <p id="ieConnection"></p>
+          </div>
+          <div class="reveal-card">
+            <h3>You could apply this in</h3>
+            <div class="chips" id="industryChips"></div>
+          </div>
+        </div>
+        <div class="result-action">
+          <button class="primary" id="finalQuestionButton">One last question</button>
+        </div>
+      </div>
+
+      <div class="screen final-question" id="postScreen" hidden>
+        <p class="eyebrow">After seeing your result</p>
+        <h2>Would you now consider industrial engineering as a major?</h2>
+        <p class="question-helper">Choose the answer that best reflects how you feel right now.</p>
+        <div class="options" id="postOptions" role="radiogroup" aria-label="Would you now consider industrial engineering?"></div>
+        <div class="question-actions">
+          <button class="primary" id="finishButton" disabled>See final message</button>
+        </div>
+      </div>
+
+      <div class="screen thank-you" id="thankYouScreen" hidden>
+        <div class="check" aria-hidden="true">✓</div>
+        <p class="eyebrow" style="justify-content:center">Response complete</p>
+        <h2 style="margin-left:auto;margin-right:auto">IE could be a great major for you.</h2>
+        <p class="lead" style="margin-left:auto;margin-right:auto">Industrial engineers combine people, data, technology, and processes to improve how organizations work in almost every industry.</p>
+        <div class="shift-message" id="shiftMessage"></div>
+        <button class="secondary" id="restartButton">Let someone else try</button>
+        <p class="privacy" id="saveStatus"></p>
+      </div>
+    </section>
+
+    <section class="admin" id="adminPanel" hidden>
+      <h3>Instructor response view</h3>
+      <p class="admin-note">This panel summarizes the local responses from this browser. The complete class results are submitted anonymously to the linked Google Sheet.</p>
+      <div class="admin-grid">
+        <div class="metric"><strong id="metricResponses">0</strong><span>Responses</span></div>
+        <div class="metric"><strong id="metricPositive">0%</strong><span>Ended yes</span></div>
+        <div class="metric"><strong id="metricChanged">0%</strong><span>Changed answer</span></div>
+        <div class="metric"><strong id="metricMoved">0%</strong><span>Moved toward IE</span></div>
+      </div>
+      <div class="admin-actions">
+        <button class="secondary" id="downloadButton">Download response CSV</button>
+        <button class="secondary" id="clearButton">Clear local response data</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>University of Arizona · Industrial Engineering</span>
+      <span>Anonymous choices only</span>
+    </footer>
+  </main>
+
+  <script>
+    const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSemuoNFqZn4WIUrGljfSEvqgAA_dPCPrK3BCrWhH_ikmZGEgQ/formResponse";
+    const GOOGLE_FORM_FIELDS = {
+      pre: "entry.394866066",
+      post: "entry.374011465"
+    };
+    const STORAGE_KEY = "ie-major-quiz-responses-v1";
+
+    const sentimentOptions = [
+      { value: "yes", label: "Yes — it is on my list" },
+      { value: "maybe", label: "Maybe — I want to learn more" },
+      { value: "no", label: "No — not currently" }
+    ];
+
+    const questions = [
+      {
+        type: "baseline",
+        eyebrow: "Before we begin",
+        title: "Are you currently considering industrial engineering as a major?",
+        helper: "There is no right answer. We want your honest first impression.",
+        options: sentimentOptions
+      },
+      {
+        eyebrow: "Question 1",
+        title: "Which kind of project sounds most exciting?",
+        helper: "Choose the one you would be happiest spending an afternoon working on.",
+        options: [
+          { label: "Use data or AI to discover something others have missed", profile: "analyst" },
+          { label: "Solve a difficult puzzle and find the smartest approach", profile: "optimizer" },
+          { label: "Build something useful that could make a real impact", profile: "builder" },
+          { label: "Improve an experience so it genuinely helps people", profile: "human" },
+          { label: "Bring a big idea to life by organizing a team", profile: "operations" }
+        ]
+      },
+      {
+        eyebrow: "Question 2",
+        title: "Which everyday problem would you most like to fix?",
+        helper: "Pick the one that bothers you enough to do something about it.",
+        options: [
+          { label: "Having lots of information but no clear answer", profile: "analyst" },
+          { label: "Long lines, wasted time, or an unnecessarily complicated process", profile: "optimizer" },
+          { label: "A useful idea that fails because the product or service is unreliable", profile: "builder" },
+          { label: "Technology or spaces that are confusing, unsafe, or inaccessible", profile: "human" },
+          { label: "Important things arriving late, running out, or being poorly organized", profile: "operations" }
+        ]
+      },
+      {
+        eyebrow: "Question 3",
+        title: "In a team, which role feels most natural?",
+        helper: "Think about class projects, clubs, sports, or work.",
+        options: [
+          { label: "The curious investigator who asks why and checks the evidence", profile: "analyst" },
+          { label: "The strategic problem-solver who compares different options", profile: "optimizer" },
+          { label: "The hands-on creator who prototypes, tests, and improves", profile: "builder" },
+          { label: "The empathetic connector who listens and communicates", profile: "human" },
+          { label: "The organizer and leader who keeps everyone moving", profile: "operations" }
+        ]
+      },
+      {
+        eyebrow: "Question 4",
+        title: "Which future sounds most exciting?",
+        helper: "Do not choose a job title—choose the kind of impact you want to have.",
+        options: [
+          { label: "Discovering new insights with data and AI", profile: "analyst" },
+          { label: "Solving complex challenges efficiently and at scale", profile: "optimizer" },
+          { label: "Turning powerful ideas into reliable products or services", profile: "builder" },
+          { label: "Improving safety, accessibility, and people’s well-being", profile: "human" },
+          { label: "Leading ambitious projects and making change happen", profile: "operations" }
+        ]
+      }
+    ];
+
+    const profiles = {
+      analyst: {
+        title: "Data & AI Decision-Maker",
+        icon: "⌁",
+        description: "You like turning evidence into better predictions and decisions—not just building technology, but deciding how it should be used.",
+        connection: "Industrial engineers use analytics, machine learning, forecasting, and experimentation to improve real operations. IE could let you work with AI while staying focused on meaningful decisions.",
+        industries: ["AI + technology", "Health care", "Finance", "Sports analytics", "Manufacturing"]
+      },
+      optimizer: {
+        title: "Optimization Problem-Solver",
+        icon: "↗",
+        description: "You naturally look for bottlenecks, compare alternatives, and ask how an entire operation could work better.",
+        connection: "Optimization and simulation are central parts of industrial engineering. IE students model complex operations—from hospitals and airports to energy, transportation, and technology.",
+        industries: ["Airlines", "Hospitals", "Technology", "Transportation", "Energy"]
+      },
+      builder: {
+        title: "Innovation & Impact Builder",
+        icon: "⚙",
+        description: "You like turning promising ideas into products or services that improve lives—and making sure they work reliably in the real world.",
+        connection: "Industrial engineers help transform ideas into dependable products and services at scale. They improve quality, reduce waste, automate work, and connect people with advanced technology.",
+        industries: ["Aerospace", "Semiconductors", "Robotics", "Automotive", "Consumer products"]
+      },
+      human: {
+        title: "Human-Centered Designer",
+        icon: "◎",
+        description: "You notice how technology and processes affect people and want workplaces and services to be safer and easier to use.",
+        connection: "Industrial engineering includes human factors, ergonomics, safety, and health-care improvement. IE could help you redesign both the technical process and the human experience around it.",
+        industries: ["Health care", "Technology", "Public safety", "Manufacturing", "Service design"]
+      },
+      operations: {
+        title: "Operations Leader",
+        icon: "◆",
+        description: "You are comfortable seeing the big picture, coordinating moving parts, and helping teams deliver on time.",
+        connection: "Industrial engineers lead operations, supply chains, projects, and continuous improvement. IE can take you from solving day-to-day problems to managing organizations and strategy.",
+        industries: ["Supply chains", "Retail", "Entertainment", "Consulting", "Technology"]
+      }
+    };
+
+    const screens = {
+      start: document.getElementById("startScreen"),
+      question: document.getElementById("questionScreen"),
+      result: document.getElementById("resultScreen"),
+      post: document.getElementById("postScreen"),
+      thanks: document.getElementById("thankYouScreen")
+    };
+
+    const state = {
+      step: 0,
+      selected: null,
+      pre: null,
+      post: null,
+      choices: [],
+      profile: null,
+      sessionId: null,
+      startedAt: null
+    };
+
+    const byId = (id) => document.getElementById(id);
+
+    function showScreen(name) {
+      Object.entries(screens).forEach(([key, element]) => {
+        element.hidden = key !== name;
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function makeSessionId() {
+      if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+      return `quiz-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+    }
+
+    function startQuiz() {
+      state.step = 0;
+      state.selected = null;
+      state.pre = null;
+      state.post = null;
+      state.choices = [];
+      state.profile = null;
+      state.sessionId = makeSessionId();
+      state.startedAt = new Date().toISOString();
+      showScreen("question");
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const question = questions[state.step];
+      const progress = ((state.step + 1) / questions.length) * 100;
+      byId("progressBar").style.width = `${progress}%`;
+      byId("progressLabel").textContent = `${state.step + 1} of ${questions.length}`;
+      byId("questionEyebrow").textContent = question.eyebrow;
+      byId("questionTitle").textContent = question.title;
+      byId("questionHelper").textContent = question.helper;
+      byId("continueButton").disabled = true;
+      state.selected = null;
+      renderOptions(byId("options"), question.options, (index, button) => {
+        state.selected = index;
+        selectVisual(button, byId("options"));
+        byId("continueButton").disabled = false;
+      });
+    }
+
+    function renderOptions(container, options, onSelect) {
+      container.innerHTML = "";
+      options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "option";
+        button.setAttribute("role", "radio");
+        button.setAttribute("aria-checked", "false");
+        button.textContent = option.label;
+        button.addEventListener("click", () => onSelect(index, button));
+        container.appendChild(button);
+      });
+    }
+
+    function selectVisual(selectedButton, container) {
+      [...container.children].forEach((button) => {
+        const isSelected = button === selectedButton;
+        button.classList.toggle("selected", isSelected);
+        button.setAttribute("aria-checked", String(isSelected));
+      });
+    }
+
+    function continueQuiz() {
+      if (state.selected === null) return;
+      const question = questions[state.step];
+      const selectedOption = question.options[state.selected];
+
+      if (question.type === "baseline") {
+        state.pre = selectedOption.value;
+      } else {
+        state.choices.push({
+          question: state.step,
+          option: state.selected,
+          profile: selectedOption.profile,
+          label: selectedOption.label
+        });
+      }
+
+      if (state.step < questions.length - 1) {
+        state.step += 1;
+        renderQuestion();
+      } else {
+        state.profile = calculateProfile();
+        renderResult();
+        showScreen("result");
+      }
+    }
+
+    function calculateProfile() {
+      const scores = Object.keys(profiles).reduce((all, key) => ({ ...all, [key]: 0 }), {});
+      state.choices.forEach((choice, index) => {
+        scores[choice.profile] += index === state.choices.length - 1 ? 1.15 : 1;
+      });
+      return Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+    }
+
+    function renderResult() {
+      const profile = profiles[state.profile];
+      byId("resultIcon").textContent = profile.icon;
+      byId("resultTitle").textContent = profile.title;
+      byId("resultDescription").textContent = profile.description;
+      byId("ieConnection").textContent = profile.connection;
+      byId("industryChips").innerHTML = profile.industries
+        .map((industry) => `<span class="chip">${industry}</span>`)
+        .join("");
+    }
+
+    function showPostQuestion() {
+      showScreen("post");
+      state.post = null;
+      byId("finishButton").disabled = true;
+      renderOptions(byId("postOptions"), sentimentOptions, (index, button) => {
+        state.post = sentimentOptions[index].value;
+        selectVisual(button, byId("postOptions"));
+        byId("finishButton").disabled = false;
+      });
+    }
+
+    function getMovement(pre, post) {
+      const scale = { no: 0, maybe: 1, yes: 2 };
+      if (scale[post] > scale[pre]) return "up";
+      if (scale[post] < scale[pre]) return "down";
+      return "same";
+    }
+
+    function movementMessage(pre, post) {
+      const movement = getMovement(pre, post);
+      if (movement === "up") return "Your answer changed after seeing how your interests connect to IE. That is exactly the kind of discovery this quiz is designed to create.";
+      if (post === "yes") return "IE was already on your list—and your result gives you a clearer picture of the kind of work you could do with it.";
+      if (post === "maybe") return "You are still exploring, which is a good place to be. Talk with us or visit a lab to see whether IE feels right in practice.";
+      return "IE may not be your first choice, and that is okay. You now have a more accurate picture of the problems industrial engineers solve.";
+    }
+
+    async function finishQuiz() {
+      if (!state.post) return;
+      const payload = {
+        pre: state.pre,
+        post: state.post
+      };
+
+      saveLocal(payload);
+      byId("shiftMessage").textContent = movementMessage(state.pre, state.post);
+      byId("saveStatus").textContent = "Submitting your anonymous before-and-after answers…";
+      showScreen("thanks");
+      updateAdmin();
+
+      const submitted = await submitRemote(payload);
+      byId("saveStatus").textContent = submitted
+        ? "Your anonymous before-and-after answers were submitted. No name or email was collected."
+        : "We could not reach the response sheet. Your answers remain saved in this browser.";
+    }
+
+    function readLocal() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+      catch { return []; }
+    }
+
+    function saveLocal(payload) {
+      const records = readLocal();
+      records.push(payload);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
+    }
+
+    async function submitRemote(payload) {
+      const formData = new URLSearchParams();
+      const displayValue = (value) => value.charAt(0).toUpperCase() + value.slice(1);
+      formData.set(GOOGLE_FORM_FIELDS.pre, displayValue(payload.pre));
+      formData.set(GOOGLE_FORM_FIELDS.post, displayValue(payload.post));
+
+      try {
+        await fetch(GOOGLE_FORM_ACTION, {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+          keepalive: true
+        });
+        return true;
+      } catch (error) {
+        console.warn("Remote submission failed; the response remains saved locally.", error);
+        return false;
+      }
+    }
+
+    function updateAdmin() {
+      const records = readLocal();
+      byId("metricResponses").textContent = records.length;
+      byId("metricPositive").textContent = records.length
+        ? `${Math.round(records.filter((r) => r.post === "yes").length / records.length * 100)}%`
+        : "0%";
+      byId("metricChanged").textContent = records.length
+        ? `${Math.round(records.filter((r) => r.pre !== r.post).length / records.length * 100)}%`
+        : "0%";
+      byId("metricMoved").textContent = records.length
+        ? `${Math.round(records.filter((r) => getMovement(r.pre, r.post) === "up").length / records.length * 100)}%`
+        : "0%";
+    }
+
+    function downloadCsv() {
+      const records = readLocal();
+      const header = ["before", "after", "changed", "movement"];
+      const rows = records.map((record) => [
+        record.pre,
+        record.post,
+        record.pre === record.post ? "no" : "yes",
+        getMovement(record.pre, record.post)
+      ]);
+      const csv = [header, ...rows]
+        .map((row) => row.map((value) => `"${String(value ?? "").replaceAll('"', '""')}"`).join(","))
+        .join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "ie-quiz-responses.csv";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function clearLocal() {
+      if (!confirm("Clear all quiz responses saved in this browser?")) return;
+      localStorage.removeItem(STORAGE_KEY);
+      updateAdmin();
+    }
+
+    byId("startButton").addEventListener("click", startQuiz);
+    byId("continueButton").addEventListener("click", continueQuiz);
+    byId("finalQuestionButton").addEventListener("click", showPostQuestion);
+    byId("finishButton").addEventListener("click", finishQuiz);
+    byId("restartButton").addEventListener("click", startQuiz);
+    byId("downloadButton").addEventListener("click", downloadCsv);
+    byId("clearButton").addEventListener("click", clearLocal);
+
+    const adminMode = new URLSearchParams(window.location.search).get("admin") === "1";
+    byId("adminPanel").hidden = !adminMode;
+    if (adminMode) updateAdmin();
+  </script>
+</body>
+</html>
