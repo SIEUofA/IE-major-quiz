@@ -421,6 +421,35 @@
     .completion-card.industry img { width: 100%; height: 100%; min-height: 210px; object-fit: cover; }
     .completion-copy { align-self: center; padding: 22px 22px 22px 0; }
     .shift-message { max-width: 650px; margin: 12px auto 24px; padding: 18px 20px; border-left: 5px solid var(--red); color: var(--navy); background: var(--sky); font-size: 18px; font-weight: 800; line-height: 1.45; text-align: left; }
+    .next-steps {
+      margin: 0 0 24px;
+      padding: 24px;
+      border: 2px solid var(--navy);
+      border-radius: 20px;
+      color: var(--navy);
+      background: #f8fbfd;
+      text-align: left;
+    }
+    .next-steps .result-kicker { margin-bottom: 6px; }
+    .next-steps h3 { margin-bottom: 8px; font-size: 26px; }
+    .next-steps > p:not(.result-kicker) { margin-bottom: 18px; color: var(--muted); line-height: 1.5; }
+    .next-step-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+    .next-step-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 108px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      color: var(--navy);
+      background: var(--white);
+      text-decoration: none;
+      transition: transform .16s ease, border .16s ease, box-shadow .16s ease;
+    }
+    .next-step-link:hover { transform: translateY(-2px); border-color: var(--blue); box-shadow: 0 8px 20px rgba(12,35,75,.11); }
+    .next-step-link strong { display: block; margin-bottom: 6px; font-size: 16px; line-height: 1.3; }
+    .next-step-link span { color: var(--muted); font-size: 13px; line-height: 1.4; }
     .privacy { max-width: 720px; margin: 24px auto 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
 
     .footer { display: flex; justify-content: space-between; gap: 20px; padding: 18px 4px 0; color: var(--muted); font-size: 12px; }
@@ -452,6 +481,7 @@
       .sticky-final-cta { align-items: stretch; flex-direction: column; }
       .sticky-final-cta .primary { width: 100%; }
       .completion-card.industry { grid-template-columns: 120px 1fr; }
+      .next-step-links { grid-template-columns: 1fr; }
       .footer { flex-direction: column; }
     }
 
@@ -627,6 +657,25 @@
           </div>
         </div>
         <div class="shift-message" id="shiftMessage"></div>
+        <div class="next-steps">
+          <p class="result-kicker">Continue exploring</p>
+          <h3>Want to learn more about Industrial Engineering?</h3>
+          <p>Explore the program or connect directly with Christina Hornett, our undergraduate academic advisor.</p>
+          <div class="next-step-links">
+            <a class="next-step-link" href="https://sie.engineering.arizona.edu/undergrad-programs" target="_blank" rel="noopener noreferrer">
+              <strong>Explore the IE undergraduate program</strong>
+              <span>Courses, degree information, and opportunities →</span>
+            </a>
+            <a class="next-step-link" href="mailto:chornett@arizona.edu">
+              <strong>Email Christina Hornett</strong>
+              <span>Undergraduate advisor · chornett@arizona.edu</span>
+            </a>
+            <a class="next-step-link" href="https://ua-trellis.my.site.com/uastudent/s/catcloud/service/calendar/?NetId=chornett" target="_blank" rel="noopener noreferrer">
+              <strong>Schedule a meeting</strong>
+              <span>Choose a time to meet with Christina →</span>
+            </a>
+          </div>
+        </div>
         <button class="secondary" id="restartButton">Let someone else try</button>
         <p class="privacy" id="saveStatus">Your anonymous before-and-after answers are being submitted.</p>
       </div>
