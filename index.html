@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0c234b" />
-  <title>Industrial Engineering Major Match | Industry Test</title>
+  <title>Industrial Engineering Major Match</title>
   <style>
     :root {
       --navy: #0c234b;
@@ -232,7 +232,12 @@
     }
     .option.selected { border-color: var(--navy); background: var(--sky); }
     .option.selected::after { border: 6px solid var(--navy); background: var(--white); }
-    .question-actions, .result-action { display: flex; justify-content: flex-end; }
+    .question-actions, .result-action, .industry-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
 
     .result-header {
       display: grid;
@@ -341,7 +346,7 @@
     }
     .industry-choice img { display: block; width: 100%; height: 125px; object-fit: cover; }
     .industry-choice span { display: block; padding: 13px 14px 15px; color: var(--navy); font-weight: 800; line-height: 1.3; }
-    .industry-actions { display: flex; justify-content: flex-end; margin-top: 30px; }
+    .industry-actions { margin-top: 30px; }
 
     .industry-hero {
       display: grid;
@@ -491,7 +496,10 @@
           <p class="question-helper" id="questionHelper"></p>
         </div>
         <div class="options" id="options" role="radiogroup" aria-labelledby="questionTitle"></div>
-        <div class="question-actions"><button class="primary" id="continueButton" disabled>Continue</button></div>
+        <div class="question-actions">
+          <button class="secondary" id="questionBackButton">← Back</button>
+          <button class="primary" id="continueButton" disabled>Continue</button>
+        </div>
       </div>
 
       <div class="screen" id="resultScreen" hidden>
@@ -522,7 +530,10 @@
           <div class="preview-grid" id="industryPreviewGrid"></div>
         </div>
 
-        <div class="result-action"><button class="primary" id="chooseIndustryButton">Choose an industry</button></div>
+        <div class="result-action">
+          <button class="secondary" id="resultBackButton">← Back</button>
+          <button class="primary" id="chooseIndustryButton">Choose an industry</button>
+        </div>
       </div>
 
       <div class="screen" id="industryQuestionScreen" hidden>
@@ -531,7 +542,10 @@
         <p class="lead industry-intro">Choose one. You will see what industrial engineers do there, familiar employers, and possible job titles.</p>
 
         <div id="industryGroups" role="radiogroup" aria-label="Choose one industry"></div>
-        <div class="industry-actions"><button class="primary" id="showIndustryButton" disabled>See what IEs do there</button></div>
+        <div class="industry-actions">
+          <button class="secondary" id="industryQuestionBackButton">← Back</button>
+          <button class="primary" id="showIndustryButton" disabled>See what IEs do there</button>
+        </div>
       </div>
 
       <div class="screen" id="industryResultScreen" hidden>
@@ -563,6 +577,10 @@
           <a id="industrySource" target="_blank" rel="noopener noreferrer">View source</a>
         </div>
 
+        <div class="result-action">
+          <button class="secondary" id="industryResultBackButton">← Back</button>
+        </div>
+
         <div class="sticky-final-cta">
           <div>
             <strong>Final step: one question left</strong>
@@ -581,7 +599,10 @@
         <h2>Now that you have seen your results, would you consider industrial engineering as a major?</h2>
         <p class="question-helper">Choose the answer that best reflects how you feel right now.</p>
         <div class="options" id="postOptions" role="radiogroup" aria-label="Would you now consider industrial engineering?"></div>
-        <div class="question-actions"><button class="primary" id="finishButton" disabled>Submit my final answer</button></div>
+        <div class="question-actions">
+          <button class="secondary" id="postBackButton">← Back</button>
+          <button class="primary" id="finishButton" disabled>Submit my final answer</button>
+        </div>
         <p class="final-note">Only your first and final answers about considering IE are saved in the live version.</p>
       </div>
 
@@ -912,6 +933,7 @@
       selectedIndustry: null,
       pre: null,
       post: null,
+      answers: [],
       choices: [],
       profile: null
     };
@@ -929,6 +951,7 @@
       state.selectedIndustry = null;
       state.pre = null;
       state.post = null;
+      state.answers = Array(questions.length).fill(null);
       state.choices = [];
       state.profile = null;
       showScreen("question");
@@ -943,13 +966,17 @@
       byId("questionEyebrow").textContent = question.eyebrow;
       byId("questionTitle").textContent = question.title;
       byId("questionHelper").textContent = question.helper;
-      byId("continueButton").disabled = true;
-      state.selected = null;
+      const savedSelection = state.answers[state.step];
+      state.selected = savedSelection ?? null;
+      byId("continueButton").disabled = state.selected === null;
       renderOptions(byId("options"), question.options, (index, button) => {
         state.selected = index;
         selectVisual(button, byId("options"));
         byId("continueButton").disabled = false;
       });
+      if (state.selected !== null) {
+        selectVisual(byId("options").querySelectorAll("button")[state.selected], byId("options"));
+      }
     }
 
     function renderOptions(container, options, onSelect) {
@@ -978,11 +1005,12 @@
       if (state.selected === null) return;
       const question = questions[state.step];
       const selectedOption = question.options[state.selected];
+      state.answers[state.step] = state.selected;
 
       if (question.type === "baseline") {
         state.pre = selectedOption.value;
       } else {
-        state.choices.push({ profile: selectedOption.profile });
+        state.choices[state.step - 1] = { profile: selectedOption.profile };
       }
 
       if (state.step < questions.length - 1) {
@@ -993,6 +1021,21 @@
         renderResult();
         showScreen("result");
       }
+    }
+
+    function backFromQuestion() {
+      if (state.step === 0) {
+        showScreen("start");
+        return;
+      }
+      state.step -= 1;
+      renderQuestion();
+    }
+
+    function backFromResult() {
+      state.step = questions.length - 1;
+      showScreen("question");
+      renderQuestion();
     }
 
     function calculateProfile() {
@@ -1015,8 +1058,7 @@
 
     function showIndustryQuestion() {
       showScreen("industryQuestion");
-      state.selectedIndustry = null;
-      byId("showIndustryButton").disabled = true;
+      byId("showIndustryButton").disabled = !state.selectedIndustry;
       renderIndustryChoices();
     }
 
@@ -1040,8 +1082,10 @@
           button.type = "button";
           button.className = "industry-choice";
           button.setAttribute("role", "radio");
-          button.setAttribute("aria-checked", "false");
+          const selected = state.selectedIndustry === key;
+          button.setAttribute("aria-checked", String(selected));
           button.dataset.industry = key;
+          button.classList.toggle("selected", selected);
           button.innerHTML = `<img src="${industry.image}" alt="${industry.alt}"><span>${industry.name}</span>`;
           button.addEventListener("click", () => {
             state.selectedIndustry = key;
@@ -1059,6 +1103,10 @@
       });
     }
 
+    function backFromIndustryQuestion() {
+      showScreen("result");
+    }
+
     function showIndustryResult() {
       if (!state.selectedIndustry) return;
       const industry = industries[state.selectedIndustry];
@@ -1074,15 +1122,26 @@
       showScreen("industryResult");
     }
 
+    function backFromIndustryResult() {
+      showIndustryQuestion();
+    }
+
     function showPostQuestion() {
       showScreen("post");
-      state.post = null;
-      byId("finishButton").disabled = true;
+      byId("finishButton").disabled = !state.post;
       renderOptions(byId("postOptions"), sentimentOptions, (index, button) => {
         state.post = sentimentOptions[index].value;
         selectVisual(button, byId("postOptions"));
         byId("finishButton").disabled = false;
       });
+      if (state.post) {
+        const selectedIndex = sentimentOptions.findIndex((option) => option.value === state.post);
+        selectVisual(byId("postOptions").querySelectorAll("button")[selectedIndex], byId("postOptions"));
+      }
+    }
+
+    function backFromPost() {
+      showScreen("industryResult");
     }
 
     function getMovement(pre, post) {
@@ -1151,10 +1210,15 @@
     }
 
     byId("startButton").addEventListener("click", startQuiz);
+    byId("questionBackButton").addEventListener("click", backFromQuestion);
     byId("continueButton").addEventListener("click", continueQuiz);
+    byId("resultBackButton").addEventListener("click", backFromResult);
     byId("chooseIndustryButton").addEventListener("click", showIndustryQuestion);
+    byId("industryQuestionBackButton").addEventListener("click", backFromIndustryQuestion);
     byId("showIndustryButton").addEventListener("click", showIndustryResult);
+    byId("industryResultBackButton").addEventListener("click", backFromIndustryResult);
     byId("goToFinalButton").addEventListener("click", showPostQuestion);
+    byId("postBackButton").addEventListener("click", backFromPost);
     byId("finishButton").addEventListener("click", finishQuiz);
     byId("restartButton").addEventListener("click", startQuiz);
   </script>
