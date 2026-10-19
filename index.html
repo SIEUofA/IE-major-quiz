@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0c234b" />
-  <title>Could Industrial Engineering Be Your Major?</title>
+  <title>Industrial Engineering Major Match | Industry Test</title>
   <style>
     :root {
       --navy: #0c234b;
@@ -18,13 +18,15 @@
       --muted: #607087;
       --line: #d8e0e8;
       --success: #16725b;
+      --theme-1: #12688a;
+      --theme-2: #148b7b;
+      --theme-3: #7952a7;
       --shadow: 0 18px 50px rgba(12, 35, 75, 0.14);
       --radius: 24px;
     }
 
     * { box-sizing: border-box; }
-
-    html { min-height: 100%; }
+    html { min-height: 100%; scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
@@ -38,15 +40,14 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    button { font: inherit; }
+    button, a { font: inherit; }
+    button { touch-action: manipulation; }
+    img { max-width: 100%; }
 
-    .top-rule {
-      height: 10px;
-      background: var(--red);
-    }
+    .top-rule { height: 10px; background: var(--red); }
 
     .shell {
-      width: min(980px, calc(100% - 28px));
+      width: min(1080px, calc(100% - 28px));
       margin: 0 auto;
       padding: 22px 0 40px;
     }
@@ -56,23 +57,19 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       color: var(--navy);
     }
 
-    .ua-logo {
-      display: block;
-      width: min(270px, 55vw);
-      height: auto;
-    }
+    .ua-logo { display: block; width: min(270px, 55vw); height: auto; }
 
     .brand-subtitle {
       color: var(--muted);
       font-size: 13px;
       font-weight: 700;
+      text-align: right;
       text-transform: uppercase;
       letter-spacing: .1em;
-      text-align: right;
     }
 
     .card {
@@ -83,11 +80,7 @@
       box-shadow: var(--shadow);
     }
 
-    .screen {
-      min-height: 620px;
-      padding: clamp(28px, 5vw, 58px);
-    }
-
+    .screen { min-height: 620px; padding: clamp(28px, 5vw, 58px); }
     .screen[hidden] { display: none; }
 
     .eyebrow {
@@ -98,18 +91,12 @@
       color: var(--red);
       font-size: 13px;
       font-weight: 800;
-      letter-spacing: .11em;
       text-transform: uppercase;
+      letter-spacing: .11em;
     }
 
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 3px;
-      background: currentColor;
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
+    .eyebrow::before { content: ""; width: 28px; height: 3px; background: currentColor; }
+    h1, h2, h3, h4, p { margin-top: 0; }
 
     h1 {
       max-width: 760px;
@@ -121,7 +108,7 @@
     }
 
     h2 {
-      max-width: 780px;
+      max-width: 840px;
       margin-bottom: 12px;
       color: var(--navy);
       font-size: clamp(30px, 5vw, 50px);
@@ -129,13 +116,11 @@
       letter-spacing: -.025em;
     }
 
-    h3 {
-      color: var(--navy);
-      font-size: 21px;
-    }
+    h3 { margin-bottom: 12px; color: var(--navy); font-size: 23px; }
+    h4 { margin-bottom: 8px; color: var(--navy); font-size: 18px; }
 
     .lead {
-      max-width: 690px;
+      max-width: 760px;
       margin-bottom: 30px;
       color: var(--muted);
       font-size: clamp(18px, 2.5vw, 23px);
@@ -150,28 +135,11 @@
       min-height: 500px;
     }
 
-    .hero-panel {
-      padding: 26px;
-      border-radius: 20px;
-      color: var(--white);
-      background: var(--navy);
-    }
+    .hero-panel { padding: 26px; border-radius: 20px; color: var(--white); background: var(--navy); }
+    .hero-panel strong { display: block; margin-bottom: 14px; font-size: 26px; line-height: 1.15; }
+    .hero-panel p { margin-bottom: 0; color: #dce8f5; line-height: 1.5; }
 
-    .hero-panel strong {
-      display: block;
-      margin-bottom: 14px;
-      font-size: 26px;
-      line-height: 1.15;
-    }
-
-    .hero-panel p {
-      margin-bottom: 0;
-      color: #dce8f5;
-      line-height: 1.5;
-    }
-
-    .primary,
-    .secondary {
+    .primary, .secondary {
       min-height: 54px;
       padding: 14px 22px;
       border-radius: 999px;
@@ -187,23 +155,22 @@
       box-shadow: 0 10px 22px rgba(171,5,32,.22);
     }
 
-    .secondary {
-      border: 2px solid var(--navy);
-      color: var(--navy);
-      background: var(--white);
-    }
+    .secondary { border: 2px solid var(--navy); color: var(--navy); background: var(--white); }
+    .primary:hover, .secondary:hover { transform: translateY(-2px); }
 
-    .primary:hover,
-    .secondary:hover { transform: translateY(-2px); }
-
-    .primary:focus-visible,
-    .secondary:focus-visible,
-    .option:focus-visible {
+    .primary:focus-visible, .secondary:focus-visible, .option:focus-visible,
+    .industry-choice:focus-visible, a:focus-visible {
       outline: 4px solid #f4c95d;
       outline-offset: 3px;
     }
 
-    .start-button { font-size: 18px; }
+    .primary:disabled {
+      border-color: #bac4ce;
+      background: #bac4ce;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     .progress-wrap {
       display: flex;
@@ -213,21 +180,8 @@
       margin-bottom: 34px;
     }
 
-    .progress {
-      flex: 1;
-      height: 8px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: #e6ebf0;
-    }
-
-    .progress > div {
-      width: 0;
-      height: 100%;
-      border-radius: inherit;
-      background: var(--red);
-      transition: width .32s ease;
-    }
+    .progress { flex: 1; height: 8px; overflow: hidden; border-radius: 999px; background: #e6ebf0; }
+    .progress > div { width: 0; height: 100%; border-radius: inherit; background: var(--red); transition: width .32s ease; }
 
     .progress-label {
       min-width: 110px;
@@ -239,15 +193,8 @@
       letter-spacing: .06em;
     }
 
-    .question-copy {
-      min-height: 125px;
-    }
-
-    .question-helper {
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.45;
-    }
+    .question-copy { min-height: 125px; }
+    .question-helper { color: var(--muted); font-size: 16px; line-height: 1.45; }
 
     .options {
       display: grid;
@@ -271,11 +218,7 @@
       transition: border .15s ease, background .15s ease, transform .15s ease;
     }
 
-    .option:hover {
-      border-color: var(--blue);
-      transform: translateY(-1px);
-    }
-
+    .option:hover { border-color: var(--blue); transform: translateY(-1px); }
     .option::after {
       content: "";
       position: absolute;
@@ -287,36 +230,16 @@
       border-radius: 50%;
       transform: translateY(-50%);
     }
-
-    .option.selected {
-      border-color: var(--navy);
-      background: var(--sky);
-    }
-
-    .option.selected::after {
-      border: 6px solid var(--navy);
-      background: var(--white);
-    }
-
-    .question-actions {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .question-actions .primary:disabled {
-      border-color: #bac4ce;
-      background: #bac4ce;
-      box-shadow: none;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .option.selected { border-color: var(--navy); background: var(--sky); }
+    .option.selected::after { border: 6px solid var(--navy); background: var(--white); }
+    .question-actions, .result-action { display: flex; justify-content: flex-end; }
 
     .result-header {
       display: grid;
       grid-template-columns: 150px 1fr;
       gap: 28px;
       align-items: center;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .result-icon {
@@ -330,23 +253,11 @@
       font-size: 64px;
     }
 
-    .result-kicker {
-      margin-bottom: 8px;
-      color: var(--red);
-      font-size: 14px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .09em;
-    }
-
-    .result-description {
-      color: var(--muted);
-      font-size: 19px;
-      line-height: 1.5;
-    }
+    .result-kicker { margin-bottom: 8px; color: var(--red); font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: .09em; }
+    .result-description { color: var(--muted); font-size: 19px; line-height: 1.5; }
 
     .ie-fit-banner {
-      margin: 0 0 22px;
+      margin-bottom: 24px;
       padding: 24px 28px;
       border: 3px solid var(--red);
       border-radius: 20px;
@@ -355,200 +266,187 @@
       text-align: center;
     }
 
-    .ie-fit-banner span {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--red);
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
+    .ie-fit-banner span { display: block; margin-bottom: 8px; color: var(--red); font-size: 13px; font-weight: 900; text-transform: uppercase; letter-spacing: .12em; }
+    .ie-fit-banner strong { display: block; font-size: clamp(29px, 4.3vw, 44px); line-height: 1.06; letter-spacing: -.025em; }
+    .ie-fit-banner p { max-width: 760px; margin: 12px auto 0; color: var(--muted); font-size: 17px; line-height: 1.45; }
 
-    .ie-fit-banner strong {
-      display: block;
-      font-size: clamp(29px, 4.3vw, 44px);
-      line-height: 1.06;
-      letter-spacing: -.025em;
-    }
-
-    .ie-fit-banner p {
-      max-width: 720px;
-      margin: 12px auto 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.45;
-    }
-
-    .reveal {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .reveal-card {
-      padding: 24px;
-      border: 1px solid var(--line);
+    .fit-explanation {
+      margin-bottom: 24px;
+      padding: 22px 24px;
       border-radius: 18px;
-      background: #fbfcfd;
-    }
-
-    .reveal-card.accent {
-      border-color: var(--navy);
       color: var(--white);
       background: var(--navy);
     }
+    .fit-explanation h3 { color: var(--white); }
+    .fit-explanation p { margin-bottom: 0; line-height: 1.55; }
 
-    .reveal-card.accent h3 { color: var(--white); }
+    .industry-preview { margin-bottom: 28px; }
+    .industry-preview > p { margin-bottom: 16px; color: var(--muted); line-height: 1.45; }
 
-    .reveal-card p {
-      margin-bottom: 0;
-      line-height: 1.5;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 16px;
-    }
-
-    .chip {
-      padding: 8px 11px;
-      border-radius: 999px;
-      color: var(--navy);
-      background: var(--sky);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .result-action {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .final-question {
+    .preview-grid {
       display: grid;
-      align-content: center;
-      min-height: 500px;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
     }
 
-    .final-question .options {
-      grid-template-columns: repeat(3, 1fr);
+    .preview-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #fbfcfd;
     }
+    .preview-card img { display: block; width: 100%; height: 92px; object-fit: cover; }
+    .preview-card strong { display: block; padding: 11px; color: var(--navy); font-size: 13px; line-height: 1.25; }
 
-    .thank-you {
-      display: grid;
-      align-content: center;
-      min-height: 520px;
-      text-align: center;
+    .industry-intro { max-width: 780px; }
+    .theme-group { margin: 30px 0 0; }
+    .theme-title { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-size: 15px; font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+    .theme-title::after { content: ""; flex: 1; height: 2px; background: currentColor; opacity: .28; }
+    .theme-1 { color: var(--theme-1); }
+    .theme-2 { color: var(--theme-2); }
+    .theme-3 { color: var(--theme-3); }
+
+    .industry-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .industry-grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .industry-choice {
+      position: relative;
+      overflow: hidden;
+      min-height: 210px;
+      padding: 0;
+      border: 3px solid transparent;
+      border-radius: 17px;
+      color: var(--ink);
+      background: #f8fafc;
+      cursor: pointer;
+      text-align: left;
+      box-shadow: inset 0 0 0 1px var(--line);
+      transition: transform .16s ease, border .16s ease, box-shadow .16s ease;
     }
-
-    .check {
+    .industry-choice:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(12,35,75,.12); }
+    .industry-choice.selected { border-color: var(--red); box-shadow: 0 10px 24px rgba(171,5,32,.16); }
+    .industry-choice.selected::after {
+      content: "✓";
+      position: absolute;
+      top: 10px;
+      right: 10px;
       display: grid;
       place-items: center;
-      width: 76px;
-      height: 76px;
-      margin: 0 auto 24px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       color: var(--white);
-      background: var(--success);
-      font-size: 38px;
+      background: var(--red);
       font-weight: 900;
     }
+    .industry-choice img { display: block; width: 100%; height: 125px; object-fit: cover; }
+    .industry-choice span { display: block; padding: 13px 14px 15px; color: var(--navy); font-weight: 800; line-height: 1.3; }
+    .industry-actions { display: flex; justify-content: flex-end; margin-top: 30px; }
 
-    .shift-message {
-      max-width: 600px;
-      margin: 12px auto 24px;
-      padding: 18px 20px;
-      border-left: 5px solid var(--red);
-      color: var(--navy);
-      background: var(--sky);
-      font-size: 18px;
-      font-weight: 800;
-      line-height: 1.45;
-      text-align: left;
-    }
-
-    .privacy {
-      max-width: 720px;
-      margin: 24px auto 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 18px 4px 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .admin {
-      margin-top: 22px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--white);
-    }
-
-    .admin[hidden] { display: none; }
-
-    .admin-grid {
+    .industry-hero {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 18px 0;
+      grid-template-columns: minmax(280px, .82fr) 1.35fr;
+      gap: 30px;
+      align-items: stretch;
+      margin-bottom: 26px;
     }
+    .industry-hero img { width: 100%; height: 100%; min-height: 320px; object-fit: cover; border-radius: 20px; }
+    .industry-hero-copy { padding: 8px 0; }
+    .industry-subtitle { margin-bottom: 22px; color: var(--muted); font-size: 20px; font-style: italic; line-height: 1.4; }
+    .industry-bullets { margin: 0; padding-left: 22px; }
+    .industry-bullets li { margin: 0 0 12px; padding-left: 4px; line-height: 1.5; }
+    .industry-bullets li::marker { color: var(--blue); }
 
-    .metric {
-      padding: 16px;
-      border-radius: 14px;
-      background: var(--sky);
-    }
+    .industry-details { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 22px; }
+    .detail-block { padding: 22px; border: 1px solid var(--line); border-radius: 17px; background: #fbfcfd; }
+    .company-list, .job-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag { padding: 8px 10px; border-radius: 999px; color: var(--navy); background: var(--sky); font-size: 13px; font-weight: 800; }
 
-    .metric strong {
-      display: block;
-      color: var(--navy);
-      font-size: 28px;
-    }
+    .real-example { margin-bottom: 28px; padding: 22px 24px; border-left: 5px solid var(--blue); color: var(--navy); background: var(--sky); line-height: 1.5; }
+    .real-example strong { display: block; margin-bottom: 6px; }
+    .real-example a { color: var(--blue); font-weight: 800; }
 
-    .metric span {
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .admin-actions {
+    .sticky-final-cta {
+      position: sticky;
+      bottom: 12px;
+      z-index: 5;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 18px;
+      padding: 15px 18px;
+      border: 2px solid var(--red);
+      border-radius: 18px;
+      background: rgba(255,255,255,.97);
+      box-shadow: 0 12px 30px rgba(12,35,75,.18);
+      backdrop-filter: blur(8px);
+    }
+    .sticky-final-cta strong { display: block; color: var(--navy); }
+    .sticky-final-cta span { color: var(--muted); font-size: 13px; }
+
+    .final-question { display: grid; align-content: center; min-height: 620px; }
+    .final-marker {
+      display: inline-flex;
+      align-items: center;
       gap: 10px;
-    }
-
-    .admin-note {
-      color: var(--muted);
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--red);
       font-size: 13px;
-      line-height: 1.45;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .final-question .options { grid-template-columns: repeat(3, 1fr); }
+    .final-question .option { min-height: 112px; padding: 22px 48px 22px 22px; font-size: 18px; }
+    .final-note { margin-top: -10px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    .thank-you { min-height: 620px; text-align: center; }
+    .check { display: grid; place-items: center; width: 76px; height: 76px; margin: 0 auto 24px; border-radius: 50%; color: var(--white); background: var(--success); font-size: 38px; font-weight: 900; }
+    .completion-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 28px 0 22px; text-align: left; }
+    .completion-card { overflow: hidden; padding: 24px; border: 1px solid var(--line); border-radius: 18px; background: #fbfcfd; }
+    .completion-card > span, .completion-copy > span { display: block; margin-bottom: 8px; color: var(--red); font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; }
+    .completion-card h3 { margin-bottom: 10px; font-size: 24px; }
+    .completion-card p { margin-bottom: 0; color: var(--muted); line-height: 1.5; }
+    .completion-card.industry { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 0; }
+    .completion-card.industry img { width: 100%; height: 100%; min-height: 210px; object-fit: cover; }
+    .completion-copy { align-self: center; padding: 22px 22px 22px 0; }
+    .shift-message { max-width: 650px; margin: 12px auto 24px; padding: 18px 20px; border-left: 5px solid var(--red); color: var(--navy); background: var(--sky); font-size: 18px; font-weight: 800; line-height: 1.45; text-align: left; }
+    .privacy { max-width: 720px; margin: 24px auto 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+
+    .footer { display: flex; justify-content: space-between; gap: 20px; padding: 18px 4px 0; color: var(--muted); font-size: 12px; }
+
+    @media (max-width: 860px) {
+      .preview-grid { grid-template-columns: repeat(3, 1fr); }
+      .industry-grid, .industry-grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .industry-hero { grid-template-columns: 1fr; }
+      .industry-hero img { height: 300px; min-height: 0; }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 620px) {
       .shell { width: min(100% - 18px, 620px); padding-top: 14px; }
       .brand-subtitle { display: none; }
       .ua-logo { width: min(235px, 68vw); }
       .card { border-radius: 18px; }
       .screen { min-height: 670px; padding: 28px 20px; }
-      .hero-grid, .reveal, .result-header { grid-template-columns: 1fr; }
+      .hero-grid, .result-header, .industry-details, .completion-summary { grid-template-columns: 1fr; }
       .hero-grid { min-height: 600px; }
       .hero-panel { align-self: end; }
       .options, .final-question .options { grid-template-columns: 1fr; }
       .option { min-height: 68px; }
       .result-icon { width: 104px; height: 104px; font-size: 44px; }
-      .admin-grid { grid-template-columns: repeat(2, 1fr); }
+      .preview-grid { grid-template-columns: repeat(2, 1fr); }
+      .industry-grid, .industry-grid.four { grid-template-columns: 1fr; }
+      .industry-choice { display: grid; grid-template-columns: 130px 1fr; min-height: 112px; }
+      .industry-choice img { height: 112px; }
+      .industry-choice span { align-self: center; }
+      .sticky-final-cta { align-items: stretch; flex-direction: column; }
+      .sticky-final-cta .primary { width: 100%; }
+      .completion-card.industry { grid-template-columns: 120px 1fr; }
       .footer { flex-direction: column; }
     }
 
@@ -569,15 +467,15 @@
       <div class="screen" id="startScreen">
         <div class="hero-grid">
           <div>
-            <p class="eyebrow">60-second major match</p>
+            <p class="eyebrow">Major match and industry explorer</p>
             <h1>What kind of problem-solver are you?</h1>
-            <p class="lead">Answer four quick questions about what you enjoy. Your result may reveal an engineering path you have not considered.</p>
-            <button class="primary start-button" id="startButton">Start the quiz</button>
+            <p class="lead">Answer four quick questions about what you enjoy, then choose an industry to see what industrial engineers do there.</p>
+            <button class="primary" id="startButton">Start the quiz</button>
             <p class="privacy">Anonymous quiz: no name, email, or student ID is requested.</p>
           </div>
           <aside class="hero-panel">
-            <strong>There is more than one way to think like an engineer.</strong>
-            <p>Some people love data. Others improve experiences, coordinate complex plans, or make products and processes work better.</p>
+            <strong>Industrial engineers work almost anywhere.</strong>
+            <p>Your interests can lead to technology, health care, manufacturing, entertainment, finance, travel, and more.</p>
           </aside>
         </div>
       </div>
@@ -593,9 +491,7 @@
           <p class="question-helper" id="questionHelper"></p>
         </div>
         <div class="options" id="options" role="radiogroup" aria-labelledby="questionTitle"></div>
-        <div class="question-actions">
-          <button class="primary" id="continueButton" disabled>Continue</button>
-        </div>
+        <div class="question-actions"><button class="primary" id="continueButton" disabled>Continue</button></div>
       </div>
 
       <div class="screen" id="resultScreen" hidden>
@@ -608,59 +504,110 @@
             <p class="result-description" id="resultDescription"></p>
           </div>
         </div>
+
         <div class="ie-fit-banner">
           <span>Your IE match</span>
           <strong>Industrial Engineering could be a great major for you.</strong>
-          <p>Your answers match the way industrial engineers approach real problems: combining people, data, technology, and better processes.</p>
+          <p>Your answers match the way industrial engineers combine people, data, technology, and better processes to solve real problems.</p>
         </div>
-        <div class="reveal">
-          <div class="reveal-card accent">
-            <h3>Why IE fits you</h3>
-            <p id="ieConnection"></p>
-          </div>
-          <div class="reveal-card">
-            <h3>You could apply this in</h3>
-            <div class="chips" id="industryChips"></div>
+
+        <div class="fit-explanation">
+          <h3>Why IE fits you</h3>
+          <p id="ieConnection"></p>
+        </div>
+
+        <div class="industry-preview">
+          <h3>Industries where your strengths could fit</h3>
+          <p>This is only a starting point. Industrial engineers work across all 10 industries in the next step.</p>
+          <div class="preview-grid" id="industryPreviewGrid"></div>
+        </div>
+
+        <div class="result-action"><button class="primary" id="chooseIndustryButton">Choose an industry</button></div>
+      </div>
+
+      <div class="screen" id="industryQuestionScreen" hidden>
+        <p class="eyebrow">Industry explorer</p>
+        <h2>Where would you be most excited to work?</h2>
+        <p class="lead industry-intro">Choose one. You will see what industrial engineers do there, familiar employers, and possible job titles.</p>
+
+        <div id="industryGroups" role="radiogroup" aria-label="Choose one industry"></div>
+        <div class="industry-actions"><button class="primary" id="showIndustryButton" disabled>See what IEs do there</button></div>
+      </div>
+
+      <div class="screen" id="industryResultScreen" hidden>
+        <p class="eyebrow">IEs in your target industry</p>
+        <div class="industry-hero">
+          <img id="industryHeroImage" alt="" />
+          <div class="industry-hero-copy">
+            <p class="result-kicker">Industrial Engineering in</p>
+            <h2 id="industryResultTitle"></h2>
+            <p class="industry-subtitle" id="industryResultSubtitle"></p>
+            <ul class="industry-bullets" id="industryBullets"></ul>
           </div>
         </div>
-        <div class="result-action">
-          <button class="primary" id="finalQuestionButton">One last question</button>
+
+        <div class="industry-details">
+          <div class="detail-block">
+            <h3>Companies to explore</h3>
+            <div class="company-list" id="companyList"></div>
+          </div>
+          <div class="detail-block">
+            <h3>Possible job titles</h3>
+            <div class="job-list" id="jobList"></div>
+          </div>
+        </div>
+
+        <div class="real-example">
+          <strong>Real-world example</strong>
+          <span id="industryExample"></span>
+          <a id="industrySource" target="_blank" rel="noopener noreferrer">View source</a>
+        </div>
+
+        <div class="sticky-final-cta">
+          <div>
+            <strong>Final step: one question left</strong>
+            <span>Your answer helps us learn whether the quiz changed how you see IE.</span>
+          </div>
+          <button class="primary" id="goToFinalButton">Continue to the final question</button>
         </div>
       </div>
 
       <div class="screen final-question" id="postScreen" hidden>
-        <p class="eyebrow">After seeing your result</p>
-        <h2>Would you now consider industrial engineering as a major?</h2>
+        <div class="progress-wrap">
+          <div class="progress" aria-hidden="true"><div style="width:100%"></div></div>
+          <div class="progress-label">Final question</div>
+        </div>
+        <div class="final-marker">Required before finishing</div>
+        <h2>Now that you have seen your results, would you consider industrial engineering as a major?</h2>
         <p class="question-helper">Choose the answer that best reflects how you feel right now.</p>
         <div class="options" id="postOptions" role="radiogroup" aria-label="Would you now consider industrial engineering?"></div>
-        <div class="question-actions">
-          <button class="primary" id="finishButton" disabled>See final message</button>
-        </div>
+        <div class="question-actions"><button class="primary" id="finishButton" disabled>Submit my final answer</button></div>
+        <p class="final-note">Only your first and final answers about considering IE are saved in the live version.</p>
       </div>
 
       <div class="screen thank-you" id="thankYouScreen" hidden>
         <div class="check" aria-hidden="true">✓</div>
-        <p class="eyebrow" style="justify-content:center">Response complete</p>
+        <p class="eyebrow" style="justify-content:center">Quiz complete</p>
         <h2 style="margin-left:auto;margin-right:auto">IE could be a great major for you.</h2>
-        <p class="lead" style="margin-left:auto;margin-right:auto">Industrial engineers combine people, data, technology, and processes to improve how organizations work in almost every industry.</p>
+        <p class="lead" style="margin-left:auto;margin-right:auto">Here is the main idea to remember from your result.</p>
+        <div class="completion-summary">
+          <div class="completion-card">
+            <span>Your IE match</span>
+            <h3 id="finalProfileTitle"></h3>
+            <p id="finalProfileReason"></p>
+          </div>
+          <div class="completion-card industry">
+            <img id="finalIndustryImage" alt="" />
+            <div class="completion-copy">
+              <span>Your industry</span>
+              <h3 id="finalIndustryTitle"></h3>
+              <p id="finalIndustrySummary"></p>
+            </div>
+          </div>
+        </div>
         <div class="shift-message" id="shiftMessage"></div>
         <button class="secondary" id="restartButton">Let someone else try</button>
-        <p class="privacy" id="saveStatus"></p>
-      </div>
-    </section>
-
-    <section class="admin" id="adminPanel" hidden>
-      <h3>Instructor response view</h3>
-      <p class="admin-note">This panel summarizes the local responses from this browser. The complete class results are submitted anonymously to the linked Google Sheet.</p>
-      <div class="admin-grid">
-        <div class="metric"><strong id="metricResponses">0</strong><span>Responses</span></div>
-        <div class="metric"><strong id="metricPositive">0%</strong><span>Ended yes</span></div>
-        <div class="metric"><strong id="metricChanged">0%</strong><span>Changed answer</span></div>
-        <div class="metric"><strong id="metricMoved">0%</strong><span>Moved toward IE</span></div>
-      </div>
-      <div class="admin-actions">
-        <button class="secondary" id="downloadButton">Download response CSV</button>
-        <button class="secondary" id="clearButton">Clear local response data</button>
+        <p class="privacy" id="saveStatus">Your anonymous before-and-after answers are being submitted.</p>
       </div>
     </section>
 
@@ -731,7 +678,7 @@
       {
         eyebrow: "Question 4",
         title: "Which future sounds most exciting?",
-        helper: "Do not choose a job title—choose the kind of impact you want to have.",
+        helper: "Choose the kind of impact you want to have.",
         options: [
           { label: "Discovering new insights with data and AI", profile: "analyst" },
           { label: "Solving complex challenges efficiently and at scale", profile: "optimizer" },
@@ -746,44 +693,215 @@
       analyst: {
         title: "Data & AI Decision-Maker",
         icon: "⌁",
-        description: "You like turning evidence into better predictions and decisions—not just building technology, but deciding how it should be used.",
+        description: "You like turning evidence into better predictions and decisions, including deciding how technology should be used.",
         connection: "Industrial engineers use analytics, machine learning, forecasting, and experimentation to improve real operations. IE could let you work with AI while staying focused on meaningful decisions.",
-        industries: ["AI + technology", "Health care", "Finance", "Sports analytics", "Manufacturing"]
+        industryKeys: ["technology", "healthcare", "finance", "entertainment", "retail"]
       },
       optimizer: {
         title: "Optimization Problem-Solver",
         icon: "↗",
         description: "You naturally look for bottlenecks, compare alternatives, and ask how an entire operation could work better.",
-        connection: "Optimization and simulation are central parts of industrial engineering. IE students model complex operations—from hospitals and airports to energy, transportation, and technology.",
-        industries: ["Airlines", "Hospitals", "Technology", "Transportation", "Energy"]
+        connection: "Optimization and simulation are central parts of industrial engineering. IE students model complex operations in hospitals, airports, transportation, energy, technology, and many other settings.",
+        industryKeys: ["travel", "healthcare", "retail", "construction", "entertainment"]
       },
       builder: {
         title: "Innovation & Impact Builder",
         icon: "⚙",
-        description: "You like turning promising ideas into products or services that improve lives—and making sure they work reliably in the real world.",
+        description: "You like turning promising ideas into products or services that improve lives and work reliably in the real world.",
         connection: "Industrial engineers help transform ideas into dependable products and services at scale. They improve quality, reduce waste, automate work, and connect people with advanced technology.",
-        industries: ["Aerospace", "Semiconductors", "Robotics", "Automotive", "Consumer products"]
+        industryKeys: ["automotive", "technology", "consumer", "space", "construction"]
       },
       human: {
         title: "Human-Centered Designer",
         icon: "◎",
         description: "You notice how technology and processes affect people and want workplaces and services to be safer and easier to use.",
         connection: "Industrial engineering includes human factors, ergonomics, safety, and health-care improvement. IE could help you redesign both the technical process and the human experience around it.",
-        industries: ["Health care", "Technology", "Public safety", "Manufacturing", "Service design"]
+        industryKeys: ["healthcare", "entertainment", "travel", "technology", "consumer"]
       },
       operations: {
         title: "Operations Leader",
         icon: "◆",
         description: "You are comfortable seeing the big picture, coordinating moving parts, and helping teams deliver on time.",
-        connection: "Industrial engineers lead operations, supply chains, projects, and continuous improvement. IE can take you from solving day-to-day problems to managing organizations and strategy.",
-        industries: ["Supply chains", "Retail", "Entertainment", "Consulting", "Technology"]
+        connection: "Industrial engineers lead operations, supply chains, projects, and continuous improvement. IE can take you from solving daily problems to managing organizations and strategy.",
+        industryKeys: ["retail", "travel", "entertainment", "automotive", "finance"]
       }
+    };
+
+    const industries = {
+      space: {
+        theme: 1,
+        name: "Space & Aerospace",
+        subtitle: "Rockets, satellites, airplanes, and space exploration",
+        image: "image1.jpg",
+        alt: "Rocket launch representing space and aerospace",
+        bullets: [
+          "Design and optimize how spacecraft, satellites, and aircraft are manufactured and assembled.",
+          "Collaborate with design engineers to make advanced technologies easier, safer, and more reliable to build.",
+          "Use simulation and analytics to optimize production, testing, and complex aerospace supply chains."
+        ],
+        companies: ["SpaceX", "Boeing", "Blue Origin", "Lockheed Martin", "NASA"],
+        jobs: ["Industrial Engineer", "Manufacturing Engineer", "Operations Research Analyst", "Supply Chain Analyst"],
+        example: "Boeing says its industrial engineers influence the design, build, and delivery of aircraft and space systems.",
+        source: "https://jobs.boeing.com/en/industrial-engineering-careers"
+      },
+      automotive: {
+        theme: 1,
+        name: "Automotive, Robotics & Advanced Manufacturing",
+        subtitle: "Electric cars, intelligent robots, and factories of the future",
+        image: "image2.jpg",
+        alt: "Robotic automotive manufacturing line",
+        bullets: [
+          "Design smart factories where robots, AI, and people work together.",
+          "Help transform vehicle and robotic concepts into products that can be manufactured at scale.",
+          "Optimize assembly lines, production quality, and factory operations using data and simulation."
+        ],
+        companies: ["Tesla", "Toyota", "Ford", "Rivian", "Boston Dynamics"],
+        jobs: ["Industrial Engineer", "Manufacturing Engineer", "Process Improvement Engineer", "Operations Analyst"],
+        example: "Tesla recruits industrial engineers to improve factory layouts, production capacity, and material flow.",
+        source: "https://www.tesla.com/careers/search/job/internship-industrial-engineer-manufacturing-winter-spring-2027-279313"
+      },
+      technology: {
+        theme: 1,
+        name: "Technology, Electronics & Semiconductors",
+        subtitle: "Smartphones, computer chips, AI hardware, and electronic devices",
+        image: "image3.jpg",
+        alt: "Semiconductor manufacturing and silicon wafer",
+        bullets: [
+          "Design high-tech manufacturing systems for chips, smartphones, computers, and other electronics.",
+          "Optimize semiconductor factories to produce more high-quality chips using sophisticated equipment.",
+          "Plan global production and supply chains to bring millions of new devices to market."
+        ],
+        companies: ["Apple", "Intel", "NVIDIA", "Samsung", "TSMC"],
+        jobs: ["Industrial Engineer", "Capacity Planning Analyst", "Manufacturing Systems Engineer", "Supply Chain Analyst"],
+        example: "Intel hires industrial engineers to model semiconductor factory capacity and guide equipment and production plans.",
+        source: "https://intel.wd1.myworkdayjobs.com/en-US/External/job/Supply-Planning-Manager--Arizona-Manufacturing_JR0287349-1"
+      },
+      healthcare: {
+        theme: 2,
+        name: "Healthcare, Pharmaceuticals & Medical Technology",
+        subtitle: "Hospitals, lifesaving medicines, and medical devices",
+        image: "image4.jpg",
+        alt: "Hospital operating room",
+        bullets: [
+          "Redesign hospital systems to reduce emergency room wait times and improve patient experiences.",
+          "Optimize operating room schedules, hospital staffing, and the use of medical resources.",
+          "Improve manufacturing and quality systems for medical devices, pharmaceuticals, and vaccines."
+        ],
+        companies: ["Mayo Clinic", "Pfizer", "Johnson & Johnson", "Medtronic", "HCA Healthcare"],
+        jobs: ["Healthcare Systems Engineer", "Process Improvement Engineer", "Operations Research Analyst", "Quality Engineer"],
+        example: "Cleveland Clinic teams have redesigned cardiovascular care workflows to improve patient flow and recovery.",
+        source: "https://consultqd.clevelandclinic.org/using-rapid-improvement-methodology-to-redesign-tavr-recovery-and-discharge-processes"
+      },
+      consumer: {
+        theme: 2,
+        name: "Food, Agriculture, Beauty & Consumer Products",
+        subtitle: "Snacks, beverages, cosmetics, shampoos, and smart farming",
+        image: "image5.jpg",
+        alt: "Food and consumer products manufacturing line",
+        bullets: [
+          "Design and optimize how products such as snacks, makeup, shampoo, and beverages are manufactured.",
+          "Develop smarter agricultural and food-processing systems using automation, robotics, and data.",
+          "Improve product quality, packaging, and supply chains while reducing waste and environmental impact."
+        ],
+        companies: ["PepsiCo", "Coca-Cola", "L’Oréal", "Procter & Gamble", "John Deere"],
+        jobs: ["Industrial Engineer", "Manufacturing Engineer", "Quality Engineer", "Supply Chain Analyst"],
+        example: "P&G describes engineering work involving advanced robotics, automated warehousing, and innovative production equipment.",
+        source: "https://www.pgcareers.com/us/en/engineering"
+      },
+      construction: {
+        theme: 2,
+        name: "Construction, Infrastructure & Energy",
+        subtitle: "Skyscrapers, stadiums, renewable energy, and smarter cities",
+        image: "image6.jpg",
+        alt: "Construction site and renewable energy infrastructure",
+        bullets: [
+          "Optimize the planning and construction of major projects, from skyscrapers to transportation infrastructure.",
+          "Design and improve the operation of energy, water, and other essential infrastructure systems.",
+          "Use simulation, digital twins, and data analytics to reduce delays, costs, energy use, and risks."
+        ],
+        companies: ["Bechtel", "Turner Construction", "Caterpillar", "NextEra Energy", "Veolia"],
+        jobs: ["Project Controls Analyst", "Industrial Engineer", "Operations Research Analyst", "Process Improvement Engineer"],
+        example: "Turner Construction uses 4D scheduling to connect 3D models with project timelines and optimize construction sequences.",
+        source: "https://www.turnerconstruction.com/services/virtual-design-and-construction-bim"
+      },
+      entertainment: {
+        theme: 3,
+        name: "Entertainment, Theme Parks, Gaming & Streaming",
+        subtitle: "Disney rides, Netflix, concerts, sports, and video games",
+        image: "image7.jpg",
+        alt: "Theme park rides and attractions",
+        bullets: [
+          "Design better theme park experiences by optimizing attraction capacity, guest flow, and wait times.",
+          "Use simulation and analytics to plan staffing, crowds, and operations for major entertainment events.",
+          "Improve how movies, streaming content, and gaming experiences are planned, produced, and delivered."
+        ],
+        companies: ["Disney", "Universal", "Netflix", "Live Nation", "Epic Games"],
+        jobs: ["Industrial Engineer", "Operations Analyst", "Capacity Planning Analyst", "Guest Experience Analyst"],
+        example: "Disney has industrial engineering roles that use analytics and optimization to improve park operations and guest experiences.",
+        source: "https://www.disneycareers.com/en/job/bay-lake/associate-industrial-engineer-operations-science/391/101912379664"
+      },
+      travel: {
+        theme: 3,
+        name: "Airlines, Travel & Hospitality",
+        subtitle: "Airlines, airports, hotels, and global travel",
+        image: "image8.jpg",
+        alt: "Aircraft at an airport terminal",
+        bullets: [
+          "Optimize flight schedules, aircraft assignments, airport gates, and airline crews.",
+          "Design smoother passenger experiences from airport security and boarding to baggage handling.",
+          "Use forecasting and analytics to manage travel demand, reduce delays, and improve operations."
+        ],
+        companies: ["Delta Air Lines", "United Airlines", "Southwest Airlines", "Marriott", "Airbnb"],
+        jobs: ["Operations Research Analyst", "Crew Scheduling Analyst", "Network Planning Analyst", "Airport Operations Analyst"],
+        example: "Southwest hires operations research specialists to model decisions in crew scheduling, training, and ground operations.",
+        source: "https://careers.southwestair.com/us/en/job/R-2026-73737/Operations-Research-Developer"
+      },
+      retail: {
+        theme: 3,
+        name: "Retail, E-Commerce & Logistics",
+        subtitle: "Online shopping, robot-powered warehouses, and fast deliveries",
+        image: "image9.jpg",
+        alt: "Automated warehouse and logistics operation",
+        bullets: [
+          "Design distribution centers where robots and people work together to fulfill orders.",
+          "Optimize delivery routes, warehouse locations, and transportation networks to make shipping faster.",
+          "Predict demand and improve inventory systems so products are available where customers need them."
+        ],
+        companies: ["Amazon", "Walmart", "Target", "FedEx", "UPS"],
+        jobs: ["Industrial Engineer", "Logistics Analyst", "Supply Chain Analyst", "Warehouse Automation Engineer"],
+        example: "Amazon advertises industrial engineering roles focused on automation, warehouse layouts, and industrial analytics.",
+        source: "https://www.amazon.jobs/en/location/pittsburgh-pennsylvania-0?base_query=&cache=&job_count=10&loc_query=&location%5B%5D=pittsburgh-pennsylvania-0&result_limit=10&sort=relevant"
+      },
+      finance: {
+        theme: 3,
+        name: "Banking, Finance & FinTech",
+        subtitle: "Banking apps, digital payments, and financial decision-making",
+        image: "image10.jpg",
+        alt: "Mobile banking and financial technology",
+        bullets: [
+          "Design banking processes that make payments, loan approvals, and customer service faster and more reliable.",
+          "Apply data analytics, AI, and optimization to improve financial decisions and identify fraud.",
+          "Optimize large-scale financial operations to reduce costs, improve customer experiences, and manage risk."
+        ],
+        companies: ["JPMorgan Chase", "Visa", "PayPal", "Capital One", "American Express"],
+        jobs: ["Process Manager", "Operations Analyst", "Data Analyst", "Risk Operations Analyst"],
+        example: "Capital One recruits process managers to redesign banking workflows, improve customer experiences, and reduce operational risks.",
+        source: "https://www.capitalonecareers.com/en/job/plano/sr-associate-process-manager/1732/101404678784"
+      }
+    };
+
+    const themeNames = {
+      1: "Designing and building the future",
+      2: "Improving everyday life and society",
+      3: "Creating experiences and optimizing services"
     };
 
     const screens = {
       start: document.getElementById("startScreen"),
       question: document.getElementById("questionScreen"),
       result: document.getElementById("resultScreen"),
+      industryQuestion: document.getElementById("industryQuestionScreen"),
+      industryResult: document.getElementById("industryResultScreen"),
       post: document.getElementById("postScreen"),
       thanks: document.getElementById("thankYouScreen")
     };
@@ -791,37 +909,28 @@
     const state = {
       step: 0,
       selected: null,
+      selectedIndustry: null,
       pre: null,
       post: null,
       choices: [],
-      profile: null,
-      sessionId: null,
-      startedAt: null
+      profile: null
     };
 
     const byId = (id) => document.getElementById(id);
 
     function showScreen(name) {
-      Object.entries(screens).forEach(([key, element]) => {
-        element.hidden = key !== name;
-      });
+      Object.entries(screens).forEach(([key, element]) => { element.hidden = key !== name; });
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function makeSessionId() {
-      if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
-      return `quiz-${Date.now()}-${Math.random().toString(16).slice(2)}`;
     }
 
     function startQuiz() {
       state.step = 0;
       state.selected = null;
+      state.selectedIndustry = null;
       state.pre = null;
       state.post = null;
       state.choices = [];
       state.profile = null;
-      state.sessionId = makeSessionId();
-      state.startedAt = new Date().toISOString();
       showScreen("question");
       renderQuestion();
     }
@@ -858,10 +967,10 @@
     }
 
     function selectVisual(selectedButton, container) {
-      [...container.children].forEach((button) => {
-        const isSelected = button === selectedButton;
-        button.classList.toggle("selected", isSelected);
-        button.setAttribute("aria-checked", String(isSelected));
+      [...container.querySelectorAll("button")].forEach((button) => {
+        const selected = button === selectedButton;
+        button.classList.toggle("selected", selected);
+        button.setAttribute("aria-checked", String(selected));
       });
     }
 
@@ -873,12 +982,7 @@
       if (question.type === "baseline") {
         state.pre = selectedOption.value;
       } else {
-        state.choices.push({
-          question: state.step,
-          option: state.selected,
-          profile: selectedOption.profile,
-          label: selectedOption.label
-        });
+        state.choices.push({ profile: selectedOption.profile });
       }
 
       if (state.step < questions.length - 1) {
@@ -893,9 +997,7 @@
 
     function calculateProfile() {
       const scores = Object.keys(profiles).reduce((all, key) => ({ ...all, [key]: 0 }), {});
-      state.choices.forEach((choice, index) => {
-        scores[choice.profile] += index === state.choices.length - 1 ? 1.15 : 1;
-      });
+      state.choices.forEach((choice, index) => { scores[choice.profile] += index === state.choices.length - 1 ? 1.15 : 1; });
       return Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
     }
 
@@ -905,9 +1007,71 @@
       byId("resultTitle").textContent = profile.title;
       byId("resultDescription").textContent = profile.description;
       byId("ieConnection").textContent = profile.connection;
-      byId("industryChips").innerHTML = profile.industries
-        .map((industry) => `<span class="chip">${industry}</span>`)
-        .join("");
+      byId("industryPreviewGrid").innerHTML = profile.industryKeys.map((key) => {
+        const industry = industries[key];
+        return `<div class="preview-card"><img src="${industry.image}" alt=""><strong>${industry.name}</strong></div>`;
+      }).join("");
+    }
+
+    function showIndustryQuestion() {
+      showScreen("industryQuestion");
+      state.selectedIndustry = null;
+      byId("showIndustryButton").disabled = true;
+      renderIndustryChoices();
+    }
+
+    function renderIndustryChoices() {
+      const container = byId("industryGroups");
+      container.innerHTML = "";
+      [1, 2, 3].forEach((theme) => {
+        const section = document.createElement("section");
+        section.className = "theme-group";
+        const heading = document.createElement("div");
+        heading.className = `theme-title theme-${theme}`;
+        heading.textContent = themeNames[theme];
+        section.appendChild(heading);
+
+        const grid = document.createElement("div");
+        const keys = Object.keys(industries).filter((key) => industries[key].theme === theme);
+        grid.className = `industry-grid${keys.length === 4 ? " four" : ""}`;
+        keys.forEach((key) => {
+          const industry = industries[key];
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "industry-choice";
+          button.setAttribute("role", "radio");
+          button.setAttribute("aria-checked", "false");
+          button.dataset.industry = key;
+          button.innerHTML = `<img src="${industry.image}" alt="${industry.alt}"><span>${industry.name}</span>`;
+          button.addEventListener("click", () => {
+            state.selectedIndustry = key;
+            [...container.querySelectorAll(".industry-choice")].forEach((item) => {
+              const selected = item === button;
+              item.classList.toggle("selected", selected);
+              item.setAttribute("aria-checked", String(selected));
+            });
+            byId("showIndustryButton").disabled = false;
+          });
+          grid.appendChild(button);
+        });
+        section.appendChild(grid);
+        container.appendChild(section);
+      });
+    }
+
+    function showIndustryResult() {
+      if (!state.selectedIndustry) return;
+      const industry = industries[state.selectedIndustry];
+      byId("industryHeroImage").src = industry.image;
+      byId("industryHeroImage").alt = industry.alt;
+      byId("industryResultTitle").textContent = industry.name;
+      byId("industryResultSubtitle").textContent = industry.subtitle;
+      byId("industryBullets").innerHTML = industry.bullets.map((item) => `<li>${item}</li>`).join("");
+      byId("companyList").innerHTML = industry.companies.map((item) => `<span class="tag">${item}</span>`).join("");
+      byId("jobList").innerHTML = industry.jobs.map((item) => `<span class="tag">${item}</span>`).join("");
+      byId("industryExample").textContent = `${industry.example} `;
+      byId("industrySource").href = industry.source;
+      showScreen("industryResult");
     }
 
     function showPostQuestion() {
@@ -930,24 +1094,27 @@
 
     function movementMessage(pre, post) {
       const movement = getMovement(pre, post);
-      if (movement === "up") return "Your answer changed after seeing how your interests connect to IE. That is exactly the kind of discovery this quiz is designed to create.";
-      if (post === "yes") return "IE was already on your list—and your result gives you a clearer picture of the kind of work you could do with it.";
-      if (post === "maybe") return "You are still exploring, which is a good place to be. Talk with us or visit a lab to see whether IE feels right in practice.";
-      return "IE may not be your first choice, and that is okay. You now have a more accurate picture of the problems industrial engineers solve.";
+      if (movement === "up") return "Your answer changed after seeing how your interests and target industry connect to IE.";
+      if (post === "yes") return "IE was already on your list, and now you have a clearer picture of the work you could do with it.";
+      if (post === "maybe") return "You are still exploring. Talk with us or visit a lab to see whether IE feels right in practice.";
+      return "IE may not be your first choice, and that is okay. You now have a more accurate picture of what industrial engineers do.";
     }
 
     async function finishQuiz() {
       if (!state.post) return;
-      const payload = {
-        pre: state.pre,
-        post: state.post
-      };
-
+      const payload = { pre: state.pre, post: state.post };
+      const profile = profiles[state.profile];
+      const industry = industries[state.selectedIndustry];
       saveLocal(payload);
+      byId("finalProfileTitle").textContent = profile.title;
+      byId("finalProfileReason").textContent = profile.connection;
+      byId("finalIndustryImage").src = industry.image;
+      byId("finalIndustryImage").alt = industry.alt;
+      byId("finalIndustryTitle").textContent = industry.name;
+      byId("finalIndustrySummary").textContent = industry.bullets[0];
       byId("shiftMessage").textContent = movementMessage(state.pre, state.post);
       byId("saveStatus").textContent = "Submitting your anonymous before-and-after answers…";
       showScreen("thanks");
-      updateAdmin();
 
       const submitted = await submitRemote(payload);
       byId("saveStatus").textContent = submitted
@@ -955,13 +1122,10 @@
         : "We could not reach the response sheet. Your answers remain saved in this browser.";
     }
 
-    function readLocal() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
-      catch { return []; }
-    }
-
     function saveLocal(payload) {
-      const records = readLocal();
+      let records = [];
+      try { records = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
+      catch { records = []; }
       records.push(payload);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(records));
     }
@@ -986,58 +1150,13 @@
       }
     }
 
-    function updateAdmin() {
-      const records = readLocal();
-      byId("metricResponses").textContent = records.length;
-      byId("metricPositive").textContent = records.length
-        ? `${Math.round(records.filter((r) => r.post === "yes").length / records.length * 100)}%`
-        : "0%";
-      byId("metricChanged").textContent = records.length
-        ? `${Math.round(records.filter((r) => r.pre !== r.post).length / records.length * 100)}%`
-        : "0%";
-      byId("metricMoved").textContent = records.length
-        ? `${Math.round(records.filter((r) => getMovement(r.pre, r.post) === "up").length / records.length * 100)}%`
-        : "0%";
-    }
-
-    function downloadCsv() {
-      const records = readLocal();
-      const header = ["before", "after", "changed", "movement"];
-      const rows = records.map((record) => [
-        record.pre,
-        record.post,
-        record.pre === record.post ? "no" : "yes",
-        getMovement(record.pre, record.post)
-      ]);
-      const csv = [header, ...rows]
-        .map((row) => row.map((value) => `"${String(value ?? "").replaceAll('"', '""')}"`).join(","))
-        .join("\n");
-      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "ie-quiz-responses.csv";
-      link.click();
-      URL.revokeObjectURL(url);
-    }
-
-    function clearLocal() {
-      if (!confirm("Clear all quiz responses saved in this browser?")) return;
-      localStorage.removeItem(STORAGE_KEY);
-      updateAdmin();
-    }
-
     byId("startButton").addEventListener("click", startQuiz);
     byId("continueButton").addEventListener("click", continueQuiz);
-    byId("finalQuestionButton").addEventListener("click", showPostQuestion);
+    byId("chooseIndustryButton").addEventListener("click", showIndustryQuestion);
+    byId("showIndustryButton").addEventListener("click", showIndustryResult);
+    byId("goToFinalButton").addEventListener("click", showPostQuestion);
     byId("finishButton").addEventListener("click", finishQuiz);
     byId("restartButton").addEventListener("click", startQuiz);
-    byId("downloadButton").addEventListener("click", downloadCsv);
-    byId("clearButton").addEventListener("click", clearLocal);
-
-    const adminMode = new URLSearchParams(window.location.search).get("admin") === "1";
-    byId("adminPanel").hidden = !adminMode;
-    if (adminMode) updateAdmin();
   </script>
 </body>
 </html>
